@@ -1,0 +1,155 @@
+/* Genel Ayarlar: Sayfadaki varsayılan boşlukları sıfırlıyoruz */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sayfanın arka planı ve yazı tipi */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffe6e6; /* Tatlı ve soft bir pembe tonu */
+    overflow: hidden; /* Sağda solda kaydırma çubukları çıkmasın diye sayfa taşmasını engelliyoruz */
+}
+
+/* Tüm ekranları tam sayfa boyutuna getirip, içindekileri tam ortaya hizalıyoruz */
+.ekran {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* JavaScript ile ekranları değiştirmek için kullanacağımız sihirli sınıf */
+.gizli {
+    display: none !important;
+}
+
+/* =========================================
+   İLK EKRAN: HEDİYE KUTUSU TASARIMI
+   ========================================= */
+.kutu-konteyner {
+    text-align: center;
+    cursor: pointer; /* Fareyle üzerine gelince el işareti çıksın */
+    transition: transform 0.3s ease;
+}
+
+/* Kutuya fareyle yaklaşınca hafifçe büyüsün */
+.kutu-konteyner:hover {
+    transform: scale(1.1); 
+}
+
+.kutu-resmi {
+    width: 250px;
+    animation: ziplama 2s infinite; /* Kutu sürekli hafifçe zıplasın */
+}
+
+.dokun-yazisi {
+    font-size: 24px;
+    color: #d6336c; /* Koyu, canlı bir pembe */
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Kutunun zıplama animasyonu */
+@keyframes ziplama {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* =========================================
+   İKİNCİ EKRAN: KUTLAMA EKRANI TASARIMI
+   ========================================= */
+#kutlama-ekrani {
+    display: flex; /* Yan yana dizebilmek için */
+    flex-direction: row; 
+    justify-content: space-between;
+    background-color: #fff0f5; 
+}
+
+/* Sağ ve Sol Fotoğraf Sütunlarının Çerçevesi */
+.foto-sutun {
+    width: 22%; /* Ekranın %22'sini kaplasın */
+    height: 100vh;
+    overflow: hidden; /* Çerçeveden taşan fotoğrafları gizle ki akma efekti olsun */
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Hafif gölge */
+}
+
+/* Fotoğrafların bulunduğu şerit */
+.foto-seridi {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Fotoğraflar arası boşluk */
+    padding: 15px;
+}
+
+/* Sütunların içindeki fotoğrafların ayarı */
+.foto-seridi img {
+    width: 100%;
+    border-radius: 12px; /* Köşeleri yumuşat */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Sol sütun yukarıdan aşağıya kaysın */
+.sol-sutun .foto-seridi {
+    animation: asagiKaydir 20s linear infinite; 
+}
+
+/* Sağ sütun aşağıdan yukarıya kaysın (Çok daha estetik durur!) */
+.sag-sutun .foto-seridi {
+    animation: yukariKaydir 20s linear infinite;
+}
+
+/* Animasyon Kuralları */
+@keyframes asagiKaydir {
+    0% { transform: translateY(-50%); } 
+    100% { transform: translateY(0); } 
+}
+
+@keyframes yukariKaydir {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+/* Orta Kısım: Pasta ve Mesaj */
+.orta-kisim {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.kutlama-mesaji {
+    font-size: 3.5rem; /* Kocaman yazı */
+    color: #ff1493; /* Parlak pembe */
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.15); /* Yazıya derinlik katar */
+}
+
+.pasta-resmi {
+    width: 320px;
+    animation: salla 4s infinite ease-in-out; /* Pasta hafifçe sallansın */
+}
+
+/* Pastanın sallanma animasyonu */
+@keyframes salla {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+/* Havai Fişek Tuvali Ayarları */
+#havai-fisekTuvasi {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* Havai fişekler her şeyin en üstünde patlasın */
+    pointer-events: none; /* ÖNEMLİ: Görünmez duvar olmasını engeller, altındaki hediye kutusuna tıklayabilirsin */
+}
