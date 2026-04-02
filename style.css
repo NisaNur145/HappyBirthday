@@ -97,12 +97,12 @@ body {
 
 /* Sol sütun yukarıdan aşağıya kaysın */
 .sol-sutun .foto-seridi {
-    animation: asagiKaydir 20s linear infinite; 
+    animation: asagiKaydir 40s linear infinite; 
 }
 
 /* Sağ sütun aşağıdan yukarıya kaysın (Çok daha estetik durur!) */
 .sag-sutun .foto-seridi {
-    animation: yukariKaydir 20s linear infinite;
+    animation: yukariKaydir 40s linear infinite;
 }
 
 /* Animasyon Kuralları */
